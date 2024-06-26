@@ -1,0 +1,18 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.ws-sheep-preview__created-at {
+  font-size: .8em;
+}
+
+.ws-sheep-preview__eye-color {
+  font-weight: bold;
+}
+
+.ws-sheep-preview__picture {
+  height: 250px;
+  object-fit: cover;
+}

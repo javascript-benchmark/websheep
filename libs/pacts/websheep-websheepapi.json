@@ -1,0 +1,73 @@
+{
+  "consumer": {
+    "name": "WebSheep"
+  },
+  "provider": {
+    "name": "WebSheepApi"
+  },
+  "interactions": [
+    {
+      "description": "a request for farmer Foo's sheep",
+      "providerState": "user is farmer Foo,farm Green exists,farm Green has a sheep named Dolly,farm Green has a sheep named Bruce,farmer Foo is farm Green owner",
+      "request": {
+        "method": "GET",
+        "path": "/farmers/FARMER_FOO/sheep",
+        "headers": {
+          "authorization": "Bearer TOKEN"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "next": null,
+          "totalCount": 2,
+          "items": [
+            {
+              "id": "Mwy2m8LY",
+              "createdAt": "2015-08-06T16:53:10.123+01:00",
+              "farmId": "Aasfasd",
+              "name": "Dolly"
+            },
+            {
+              "id": "VxyoabX4",
+              "createdAt": "2015-08-06T16:53:10.123+01:00",
+              "farmId": "Aasfasd",
+              "name": "Bruce"
+            }
+          ]
+        },
+        "matchingRules": {
+          "$.body.items[0].id": {
+            "match": "type"
+          },
+          "$.body.items[0].createdAt": {
+            "match": "regex",
+            "regex": "^\\d{4}-[01]\\d-[0-3]\\dT[0-2]\\d:[0-5]\\d:[0-5]\\d\\.\\d{3,}([+-][0-2]\\d:[0-5]\\d|Z)$"
+          },
+          "$.body.items[0].farmId": {
+            "match": "type"
+          },
+          "$.body.items[1].id": {
+            "match": "type"
+          },
+          "$.body.items[1].createdAt": {
+            "match": "regex",
+            "regex": "^\\d{4}-[01]\\d-[0-3]\\dT[0-2]\\d:[0-5]\\d:[0-5]\\d\\.\\d{3,}([+-][0-2]\\d:[0-5]\\d|Z)$"
+          },
+          "$.body.items[1].farmId": {
+            "match": "type"
+          }
+        }
+      },
+      "metadata": null
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}

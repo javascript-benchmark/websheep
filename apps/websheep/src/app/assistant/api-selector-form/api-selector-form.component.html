@@ -1,0 +1,17 @@
+<form fxLayout="row" fxLayoutAlign="center center" [formGroup]="apiBaseUrlForm">
+  <mat-form-field>
+    <input
+      formControlName="apiServerUrl"
+      matInput
+      placeholder="API's URL">
+  </mat-form-field>
+
+  <mat-icon
+    class="ws-api-selector-form__close"
+    aria-hidden="false"
+    aria-label="Close editor"
+    (click)="close()">close
+  </mat-icon>
+
+</form>
+

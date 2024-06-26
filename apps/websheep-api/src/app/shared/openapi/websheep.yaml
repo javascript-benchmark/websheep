@@ -1,0 +1,430 @@
+openapi: '3.1.0'
+info:
+  version: 1.0.0
+  title: Websheep
+  description: |
+    * [JSON specification](specification.json)
+    * [YAML specification](specification.yaml)
+  license:
+    name: MIT
+servers:
+  - description: Broken Access Control 1
+    url: http://localhost:3333/authz1
+  - description: Broken Access Control 2
+    url: http://localhost:3333/authz2
+  - description: Bad C.O.R.S. rules
+    url: http://localhost:3333/csrf1
+paths:
+  #
+  # Authentication
+  #
+  /tokens:
+    post:
+      summary: Create a token
+      tags:
+        - Authentication
+      operationId: createToken
+      requestBody:
+        description: Farmer credentials
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Credentials'
+      responses:
+        201:
+          description: Farmer id and token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        400:
+          $ref: '#/components/responses/400'
+
+  /tokens/{tokenId}:
+    delete:
+      summary: Destroy token
+      tags:
+        - Authentication
+      operationId: deleteToken
+      parameters:
+        - in: path
+          name: tokenId
+          required: true
+          schema:
+            type: string
+          description: The token's id
+      responses:
+        204:
+          description: Token destroyed
+      security:
+        - BearerAuth: []
+
+  #
+  # Farm
+  #
+  /farmers/{farmerId}/farms:
+    get:
+      summary: Get farmer's farms
+      tags:
+        - Farm
+      operationId: getFarmerFarms
+      parameters:
+        - in: path
+          name: farmerId
+          required: true
+          schema:
+            type: string
+          description: The farmer's id
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FarmListResponse'
+      security:
+        - BearerAuth: []
+
+  #
+  # Farmer
+  #
+  /farmers/{farmerId}:
+    get:
+      summary: Get farmer
+      tags:
+        - Farmer
+      operationId: getFarmer
+      parameters:
+        - in: path
+          name: farmerId
+          required: true
+          schema:
+            type: string
+          description: The farmer's id
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Farmer'
+      security:
+        - BearerAuth: []
+
+    patch:
+      summary: Update farmer
+      tags:
+        - Farmer
+      operationId: updateFarmer
+      parameters:
+        - in: path
+          name: farmerId
+          required: true
+          schema:
+            type: string
+          description: The farmer's id
+      requestBody:
+        description: Farmer
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Farmer'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Farmer'
+        400:
+          $ref: '#/components/responses/400'
+      security:
+        - BearerAuth: []
+
+  #
+  # Sheep
+  #
+  /farmers/{farmerId}/sheep:
+    get:
+      summary: Get farmer's sheep
+      tags:
+        - Sheep
+      operationId: getFarmerSheep
+      parameters:
+        - in: path
+          name: farmerId
+          required: true
+          schema:
+            type: string
+          description: The farmer's id
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SheepListResponse'
+      security:
+        - BearerAuth: []
+
+  /sheep:
+    post:
+      summary: Add sheep
+      tags:
+        - Sheep
+      operationId: addSheep
+      requestBody:
+        description: Sheep info
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SheepRequest'
+          # Allow x-www-form-urlencoded in order to be able to
+          # bypass C.S.R.F. for exercices csrf2 & csrf3.
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SheepRequest'
+      responses:
+        201:
+          description: The created sheep
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SheepWithFarm'
+        400:
+          $ref: '#/components/responses/400'
+      security:
+        - BearerAuth: []
+
+components:
+  schemas:
+    Credentials:
+      type: object
+      additionalProperties: false
+      required:
+        - userName
+        - password
+      properties:
+        userName:
+          type: string
+          example: karinelemarchand
+        password:
+          type: string
+          format: password
+          example: '123456'
+
+    Farm:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+
+    FarmListResponse:
+      allOf:
+        - $ref: '#/components/schemas/ListResponse'
+        - type: object
+          additionalProperties: false
+          properties:
+            items:
+              type: array
+              items:
+                $ref: '#/components/schemas/Farm'
+
+    Farmer:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+          maxLength: 10
+
+    ListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        next:
+          type: string
+        previous:
+          type: string
+        totalCount:
+          type: number
+        items:
+          type: array
+          # Any type
+          items: {}
+
+    SheepBase:
+      type: object
+      additionalProperties: false
+      required:
+        - name
+      properties: &sheepBaseProperties
+        age:
+          type: number
+        destinations:
+          type: array
+          items:
+            type: string
+            enum:
+              - kebab
+              - wool
+        eyeColor:
+          type: string
+        gender:
+          type: string
+          enum:
+            - female
+            - male
+        name:
+          type: string
+        pictureUri:
+          type: string
+          nullable: true
+
+    SheepRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        # @hack using anchors because express-openapi-validate fails to check with allOf
+        <<: *sheepBaseProperties
+        farmId:
+          type: string
+        farm:
+          deprecated: true
+          description: '@deprecated use farmId field instead'
+          type: object
+          properties:
+            id:
+              type: string
+
+    #    SheepRequest:
+    #      allOf:
+    #        - $ref: '#/components/schemas/SheepBase'
+    #        - oneOf:
+    #            - type: object
+    #              additionalProperties: false
+    #              properties:
+    #                farmId:
+    #                  type: string
+    #            - type: object
+    #              additionalProperties: false
+    #              properties:
+    #                farm:
+    #                  deprecated: true
+    #                  description: '@deprecated use farmId field instead'
+    #                  type: object
+    #                  properties:
+    #                    id:
+    #                      type: string
+
+    Sheep:
+      type: object
+      additionalProperties: false
+      # @hack using anchors because express-openapi-validate fails to check with allOf
+      properties: &sheepProperties
+        <<: *sheepBaseProperties
+        id:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        farmId:
+          type: string
+
+    #    Sheep:
+    #      allOf:
+    #        - $ref: '#/components/schemas/SheepBase'
+    #        - type: object
+    #          properties:
+    #            id:
+    #              type: string
+    #            createdAt:
+    #              type: string
+    #              format: date-time
+
+    SheepWithFarm:
+      type: object
+      additionalProperties: false
+      properties:
+        # @hack using anchors because express-openapi-validate fails to check with allOf
+        <<: *sheepProperties
+        farm:
+          $ref: '#/components/schemas/Farm'
+
+    #    SheepWithFarm:
+    #      allOf:
+    #        - $ref: '#/components/schemas/Sheep'
+    #        - type: object
+    #          additionalProperties: false
+    #          properties:
+    #            farm:
+    #              $ref: '#/components/schemas/Farm'
+
+    SheepListResponse:
+      allOf:
+        - $ref: '#/components/schemas/ListResponse'
+        - type: object
+          properties:
+            items:
+              type: array
+              items:
+                $ref: '#/components/schemas/SheepWithFarm'
+
+    TokenResponse:
+      type: object
+      additionalProperties: false
+      required:
+        - id
+        - token
+        - userId
+      properties:
+        id:
+          type: string
+          description: Token's id
+        token:
+          type: string
+          description: Token's value
+        userId:
+          type: string
+      description: User's id
+
+    Error:
+      type: object
+      properties:
+        name:
+          type: string
+          enum:
+            - ValidationError
+        message:
+          type: string
+
+  responses:
+    400:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: false
+            required:
+              - errors
+            properties:
+              errors:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Error'
+
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer

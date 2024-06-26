@@ -1,0 +1,43 @@
+<form
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  [formGroup]="loginForm"
+  (ngSubmit)="logIn()">
+
+  <mat-form-field
+    class="ws-login-field">
+    <input
+      formControlName="userName"
+      matInput
+      placeholder="User Name"
+      type="text">
+  </mat-form-field>
+
+  <mat-form-field
+    class="ws-login-field">
+    <input
+      formControlName="password"
+      matInput
+      placeholder="Password"
+      type="password">
+  </mat-form-field>
+
+  <div>
+    <button mat-button type="reset">RESET</button>
+
+    <button color="primary" mat-raised-button type="submit">SIGN IN</button>
+  </div>
+
+  <mat-error *ngIf="errorMessage$ | async as errorMessage">{{ errorMessage }}</mat-error>
+
+</form>
+
+<hr>
+
+<div fxLayout="column" fxLayoutAlign="center center">
+  <h3>Other farmers</h3>
+  <ul>
+    <li>foobar : zTAr@6y60PwJ</li>
+    <li>johndoe : %yP50h^qI02t</li>
+  </ul>
+</div>

@@ -1,0 +1,36 @@
+<section fxFill fxLayout="column">
+
+  <!-- Topic selector. -->
+  <ws-item-selector
+    description="Choose a topic"
+    titlePrefix="Topic"
+    [selectedId]="topic$ | async"
+    [idAndLabelList]="topicAndLabelList"
+    (selectedIdChange)="selectTopic($event)"></ws-item-selector>
+
+  <!-- Mission selector. -->
+  <ws-item-selector
+    *ngIf="topic$ | async"
+    description="Choose a mission"
+    titlePrefix="Mission"
+    [selectedId]="missionId$ | async"
+    [idAndLabelList]="missionIdAndLabelList$ | async"
+    (selectedIdChange)="selectMissionById($event)"></ws-item-selector>
+
+  <ws-mission-info
+    *ngIf="mission$ | async"
+    [mission]="mission$ | async"></ws-mission-info>
+
+  <div class="ws-scrollable" fxFlex></div>
+
+  <mat-divider></mat-divider>
+  <footer class="ws-assistant__footer">
+    <ws-api-selector></ws-api-selector>
+    <mat-divider></mat-divider>
+    <div>
+      <span>API Base URL:&nbsp;</span>
+      <a [href]="apiBaseUrl$ | async">{{ apiBaseUrl$ | async }}</a>
+    </div>
+  </footer>
+
+</section>

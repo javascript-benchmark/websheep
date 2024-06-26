@@ -1,0 +1,17 @@
+<div
+  *ngIf="!isEditing"
+  class="ws-api-selector__edit"
+  (click)="edit()">
+  <span>Server:&nbsp;</span>
+  <span>{{ apiServerUrl$ | async }}</span>
+  <mat-icon
+    class="ws-api-selector__edit-button"
+    aria-hidden="false"
+    aria-label="Edit API URL">edit
+  </mat-icon>
+</div>
+
+<div
+  *ngIf="isEditing">
+  <ws-api-selector-form (done)="stopEditing()"></ws-api-selector-form>
+</div>
