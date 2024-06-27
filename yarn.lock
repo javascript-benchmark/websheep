@@ -15,6 +15,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@angular-devkit/architect@npm:0.803.23":
+  version: 0.803.23
+  resolution: "@angular-devkit/architect@npm:0.803.23"
+  dependencies:
+    "@angular-devkit/core": 8.3.23
+    rxjs: 6.4.0
+  checksum: 5ee80f963d7255c348db8bb43a8d0f65552b6473791bcee2ef924b46d680b938578dd685f176166d9e6a656947ea6b29525428e90ba7f747928e0f96114c94f2
+  languageName: node
+  linkType: hard
+
 "@angular-devkit/architect@npm:0.803.3":
   version: 0.803.3
   resolution: "@angular-devkit/architect@npm:0.803.3"
@@ -270,6 +280,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@angular-devkit/core@npm:8.3.23":
+  version: 8.3.23
+  resolution: "@angular-devkit/core@npm:8.3.23"
+  dependencies:
+    ajv: 6.10.2
+    fast-json-stable-stringify: 2.0.0
+    magic-string: 0.25.3
+    rxjs: 6.4.0
+    source-map: 0.7.3
+  checksum: c1fbce091f298df4d9256482558b293d6a86d520c433eedfdc98dcf7176ccd66dfa3526753c076da58d9f3c6fd3722bb30052671a624ef0b7e447fcbf015a272
+  languageName: node
+  linkType: hard
+
 "@angular-devkit/core@npm:8.3.3":
   version: 8.3.3
   resolution: "@angular-devkit/core@npm:8.3.3"
@@ -303,6 +326,16 @@ __metadata:
     "@angular-devkit/core": 7.3.9
     rxjs: 6.3.3
   checksum: 5bc1733768c19e0e1df1d1771610a9877f0382be1e2321541e464c892c1f22b8bc94642627b2d768d0c2f10393abe405d3cdb43f4792771e965a9c029186d88b
+  languageName: node
+  linkType: hard
+
+"@angular-devkit/schematics@npm:8.3.23":
+  version: 8.3.23
+  resolution: "@angular-devkit/schematics@npm:8.3.23"
+  dependencies:
+    "@angular-devkit/core": 8.3.23
+    rxjs: 6.4.0
+  checksum: 2761ef076d821675f4360fadcc7cdcb8e9a40e8423c8c44754213c626f2a605976aeebc3f492e4a484dc43f7b068e7e4f9562c75aa92df95b6951010a75e823f
   languageName: node
   linkType: hard
 
@@ -1887,18 +1920,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nrwl/angular@npm:8.6.0":
-  version: 8.6.0
-  resolution: "@nrwl/angular@npm:8.6.0"
+"@nrwl/angular@npm:8.12.11":
+  version: 8.12.11
+  resolution: "@nrwl/angular@npm:8.12.11"
   dependencies:
-    "@angular-devkit/schematics": 8.3.3
-    "@nrwl/cypress": 8.6.0
-    "@nrwl/jest": 8.6.0
-    "@schematics/angular": 8.3.3
+    "@angular-devkit/schematics": 8.3.23
+    "@nrwl/cypress": 8.12.11
+    "@nrwl/jest": 8.12.11
+    "@schematics/angular": 8.3.23
     jasmine-marbles: ~0.6.0
   peerDependencies:
-    "@nrwl/workspace": 8.6.0
-  checksum: 45419b1b202c45568cce974e620accfc6bd163d5db412d98b1163be365d4733b1f503378f8cb74ba74242afcf4ea98ab684c164eeb1c9c8e308813720f513645
+    "@nrwl/workspace": 8.12.11
+  checksum: b4736c5a76c283e6cd8de8dc1b2a0796f0ba5270930338effb41c18feacb57d059fce8778718a29feb9d9d751f86b1e2aae9030ff1cdbdfb3c73d10d506f6de9
   languageName: node
   linkType: hard
 
@@ -1913,6 +1946,25 @@ __metadata:
   bin:
     nx: ./bin/nx.js
   checksum: 66a0de12e6e4eed76c47e1586e0314ab0b31f43e996117fcb31a4b891ccfbc10d82a514a6a448df3b49519c9751e3af2449576c97804846e7f14857ed00e453e
+  languageName: node
+  linkType: hard
+
+"@nrwl/cypress@npm:8.12.11":
+  version: 8.12.11
+  resolution: "@nrwl/cypress@npm:8.12.11"
+  dependencies:
+    "@angular-devkit/architect": 0.803.23
+    "@angular-devkit/core": 8.3.23
+    "@cypress/webpack-preprocessor": ~4.1.0
+    fork-ts-checker-webpack-plugin: ^3.1.1
+    tree-kill: 1.2.2
+    ts-loader: ^5.3.1
+    tsconfig-paths-webpack-plugin: 3.2.0
+    webpack-node-externals: 1.7.2
+  peerDependencies:
+    "@nrwl/workspace": 8.12.11
+    cypress: ^3.8.2
+  checksum: e0a322a754858f14e733ba36e827078b14613d3e996208d24d71f367939d5cb8571277bda8ac8678c259b4e431828ac65d703dcd2027991d8277a480e024f01f
   languageName: node
   linkType: hard
 
@@ -1944,6 +1996,19 @@ __metadata:
   peerDependencies:
     "@nrwl/workspace": 8.6.0
   checksum: 500a96901c917ecfa66233f8619916a4691e82720f723dec7bf08ff1c81f12cc42d222a72a55ef74f72bb9f9642f1b2f8d78f594dafce9cc51f301cdbff0871e
+  languageName: node
+  linkType: hard
+
+"@nrwl/jest@npm:8.12.11":
+  version: 8.12.11
+  resolution: "@nrwl/jest@npm:8.12.11"
+  dependencies:
+    "@angular-devkit/architect": 0.803.23
+    "@angular-devkit/core": 8.3.23
+    "@angular-devkit/schematics": 8.3.23
+  peerDependencies:
+    "@nrwl/workspace": 8.12.11
+  checksum: b96c3d1d464acdbe5182f010b9adfde3fffe86c06df9b5e8ff16ec994cf1941b989e41a66307a003f752a28c78e8eb0e3194df96d3118423994ca6cf6bc0fe7a
   languageName: node
   linkType: hard
 
@@ -2105,13 +2170,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@schematics/angular@npm:8.3.3":
-  version: 8.3.3
-  resolution: "@schematics/angular@npm:8.3.3"
+"@schematics/angular@npm:8.3.23":
+  version: 8.3.23
+  resolution: "@schematics/angular@npm:8.3.23"
   dependencies:
-    "@angular-devkit/core": 8.3.3
-    "@angular-devkit/schematics": 8.3.3
-  checksum: a89171dbc9355c4a1a78f97420d8d2c509605678733064404d399ee713b1d8804ae74201405ac17f4d59866aad1361677c7246140f5366d52d91af7f43b6a248
+    "@angular-devkit/core": 8.3.23
+    "@angular-devkit/schematics": 8.3.23
+  checksum: 13fc8f43b1141e70f372762cfbb890dc0860c5370f24a706ad214453495b630e4014c090b6588480df153e29bb03fe3faae8c84f0f6ecaebdec3bcd82e1acdd5
   languageName: node
   linkType: hard
 
@@ -3149,6 +3214,16 @@ __metadata:
     normalize-path: ^3.0.0
     picomatch: ^2.0.4
   checksum: c951385862bf114807d594bdffccb769bd7219ddc14f24fc135cde075ad2477a97991567b8bb5032d4f279f96897f0c2af6468a350a6c674ac0a5ee3b62a26d6
+  languageName: node
+  linkType: hard
+
+"anymatch@npm:~3.1.2":
+  version: 3.1.3
+  resolution: "anymatch@npm:3.1.3"
+  dependencies:
+    normalize-path: ^3.0.0
+    picomatch: ^2.0.4
+  checksum: 3e044fd6d1d26545f235a9fe4d7a534e2029d8e59fa7fd9f2a6eb21230f6b5380ea1eaf55136e60cbf8e613544b3b766e7a6fa2102e2a3a117505466e3025dc2
   languageName: node
   linkType: hard
 
@@ -4529,6 +4604,25 @@ __metadata:
     fsevents:
       optional: true
   checksum: 0c43e89cbf0268ef1e1f41ce8ec5233c7ba022c6f3282c2ef6530e351d42396d389a1148c5a040f291cf1f4083a4c6b2f51dad3f31c726442ea9a337de316bcf
+  languageName: node
+  linkType: hard
+
+"chokidar@npm:^3.3.0":
+  version: 3.6.0
+  resolution: "chokidar@npm:3.6.0"
+  dependencies:
+    anymatch: ~3.1.2
+    braces: ~3.0.2
+    fsevents: ~2.3.2
+    glob-parent: ~5.1.2
+    is-binary-path: ~2.1.0
+    is-glob: ~4.0.1
+    normalize-path: ~3.0.0
+    readdirp: ~3.6.0
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  checksum: d2f29f499705dcd4f6f3bbed79a9ce2388cf530460122eed3b9c48efeab7a4e28739c6551fd15bec9245c6b9eeca7a32baa64694d64d9b6faeb74ddb8c4a413d
   languageName: node
   linkType: hard
 
@@ -7008,6 +7102,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fork-ts-checker-webpack-plugin@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "fork-ts-checker-webpack-plugin@npm:3.1.1"
+  dependencies:
+    babel-code-frame: ^6.22.0
+    chalk: ^2.4.1
+    chokidar: ^3.3.0
+    micromatch: ^3.1.10
+    minimatch: ^3.0.4
+    semver: ^5.6.0
+    tapable: ^1.0.0
+    worker-rpc: ^0.1.0
+  checksum: c7b278e569ec7d5a1c73808b80870dda87f6171dc33c7cf06090c441c54753e1a5886b8256269fd2e100cda980b3f12db02d02ae2008fc067c81e948a173f35f
+  languageName: node
+  linkType: hard
+
 "form-data@npm:^2.0.0, form-data@npm:^2.3.1, form-data@npm:^2.5.0":
   version: 2.5.1
   resolution: "form-data@npm:2.5.1"
@@ -7178,9 +7288,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fsevents@npm:~2.3.2":
+  version: 2.3.3
+  resolution: "fsevents@npm:2.3.3"
+  dependencies:
+    node-gyp: latest
+  checksum: 11e6ea6fea15e42461fc55b4b0e4a0a3c654faa567f1877dbd353f39156f69def97a69936d1746619d656c4b93de2238bf731f6085a03a50cabf287c9d024317
+  conditions: os=darwin
+  languageName: node
+  linkType: hard
+
 "fsevents@patch:fsevents@^1.2.2#~builtin<compat/fsevents>, fsevents@patch:fsevents@^1.2.7#~builtin<compat/fsevents>":
   version: 1.2.9
-  resolution: "fsevents@patch:fsevents@npm%3A1.2.9#~builtin<compat/fsevents>::version=1.2.9&hash=d11327"
+  resolution: "fsevents@patch:fsevents@npm%3A1.2.9#~builtin<compat/fsevents>::version=1.2.9&hash=18f3a7"
   dependencies:
     nan: ^2.12.1
     node-pre-gyp: ^0.12.0
@@ -7190,7 +7310,16 @@ __metadata:
 
 "fsevents@patch:fsevents@~2.1.1#~builtin<compat/fsevents>":
   version: 2.1.1
-  resolution: "fsevents@patch:fsevents@npm%3A2.1.1#~builtin<compat/fsevents>::version=2.1.1&hash=31d12a"
+  resolution: "fsevents@patch:fsevents@npm%3A2.1.1#~builtin<compat/fsevents>::version=2.1.1&hash=18f3a7"
+  dependencies:
+    node-gyp: latest
+  conditions: os=darwin
+  languageName: node
+  linkType: hard
+
+"fsevents@patch:fsevents@~2.3.2#~builtin<compat/fsevents>":
+  version: 2.3.3
+  resolution: "fsevents@patch:fsevents@npm%3A2.3.3#~builtin<compat/fsevents>::version=2.3.3&hash=18f3a7"
   dependencies:
     node-gyp: latest
   conditions: os=darwin
@@ -7350,6 +7479,15 @@ __metadata:
   dependencies:
     is-glob: ^4.0.1
   checksum: 6d20a098676e6558b32fdad8f82f6f77290d843ee302420d99b7926314b04358f0913c0d2239a269a8ed34d33c2761cd5a7a869b8db1eb47d9541e928692b1d7
+  languageName: node
+  linkType: hard
+
+"glob-parent@npm:~5.1.2":
+  version: 5.1.2
+  resolution: "glob-parent@npm:5.1.2"
+  dependencies:
+    is-glob: ^4.0.1
+  checksum: f4f2bfe2425296e8a47e36864e4f42be38a996db40420fe434565e4480e3322f18eb37589617a98640c5dc8fdec1a387007ee18dbb1f3f5553409c34d17f425e
   languageName: node
   linkType: hard
 
@@ -10474,6 +10612,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"microevent.ts@npm:~0.1.1":
+  version: 0.1.1
+  resolution: "microevent.ts@npm:0.1.1"
+  checksum: 7874fcdb3f0dfa4e996d3ea63b3b9882874ae7d22be28d51ae20da24c712e9e28e5011d988095c27dd2b32e37c0ad7425342a71b89adb8e808ec7194fadf4a7a
+  languageName: node
+  linkType: hard
+
 "micromatch@npm:^2.3.11":
   version: 2.3.11
   resolution: "micromatch@npm:2.3.11"
@@ -12102,6 +12247,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"picomatch@npm:^2.2.1":
+  version: 2.3.1
+  resolution: "picomatch@npm:2.3.1"
+  checksum: 050c865ce81119c4822c45d3c84f1ced46f93a0126febae20737bd05ca20589c564d6e9226977df859ed5e03dc73f02584a2b0faad36e896936238238b0446cf
+  languageName: node
+  linkType: hard
+
 "pidtree@npm:^0.3.0":
   version: 0.3.0
   resolution: "pidtree@npm:0.3.0"
@@ -12809,6 +12961,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"readdirp@npm:~3.6.0":
+  version: 3.6.0
+  resolution: "readdirp@npm:3.6.0"
+  dependencies:
+    picomatch: ^2.2.1
+  checksum: 1ced032e6e45670b6d7352d71d21ce7edf7b9b928494dcaba6f11fba63180d9da6cd7061ebc34175ffda6ff529f481818c962952004d273178acd70f7059b320
+  languageName: node
+  linkType: hard
+
 "realpath-native@npm:^1.1.0":
   version: 1.1.0
   resolution: "realpath-native@npm:1.1.0"
@@ -13162,14 +13323,14 @@ __metadata:
 
 "resolve@patch:resolve@1.1.7#~builtin<compat/resolve>":
   version: 1.1.7
-  resolution: "resolve@patch:resolve@npm%3A1.1.7#~builtin<compat/resolve>::version=1.1.7&hash=3bafbf"
+  resolution: "resolve@patch:resolve@npm%3A1.1.7#~builtin<compat/resolve>::version=1.1.7&hash=07638b"
   checksum: e9dbca78600ae56835c43a09f1276876c883e4b4bbd43e2683fa140671519d2bdebeb1c1576ca87c8c508ae2987b3ec481645ac5d3054b0f23254cfc1ce49942
   languageName: node
   linkType: hard
 
 "resolve@patch:resolve@1.x#~builtin<compat/resolve>, resolve@patch:resolve@^1.1.7#~builtin<compat/resolve>, resolve@patch:resolve@^1.10.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.3.2#~builtin<compat/resolve>, resolve@patch:resolve@^1.5.0#~builtin<compat/resolve>":
   version: 1.12.0
-  resolution: "resolve@patch:resolve@npm%3A1.12.0#~builtin<compat/resolve>::version=1.12.0&hash=c3c19d"
+  resolution: "resolve@patch:resolve@npm%3A1.12.0#~builtin<compat/resolve>::version=1.12.0&hash=07638b"
   dependencies:
     path-parse: ^1.0.6
   checksum: 8a532655cc160961463214d2c2522fb4ea8808d13ff15cc48ab9c5193d302782a577c220481055e792fcc3b8a0df039251da903654780d5a7bb364b1f2e6861d
@@ -15082,6 +15243,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tree-kill@npm:1.2.2":
+  version: 1.2.2
+  resolution: "tree-kill@npm:1.2.2"
+  bin:
+    tree-kill: cli.js
+  checksum: 49117f5f410d19c84b0464d29afb9642c863bc5ba40fcb9a245d474c6d5cc64d1b177a6e6713129eb346b40aebb9d4631d967517f9fbe8251c35b21b13cd96c7
+  languageName: node
+  linkType: hard
+
 "trim-right@npm:^1.0.1":
   version: 1.0.1
   resolution: "trim-right@npm:1.0.1"
@@ -15147,7 +15317,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-loader@npm:5.4.5":
+"ts-loader@npm:5.4.5, ts-loader@npm:^5.3.1":
   version: 5.4.5
   resolution: "ts-loader@npm:5.4.5"
   dependencies:
@@ -15361,7 +15531,7 @@ __metadata:
 
 "typescript@patch:typescript@3.2.4#~builtin<compat/typescript>, typescript@patch:typescript@~3.2.2#~builtin<compat/typescript>":
   version: 3.2.4
-  resolution: "typescript@patch:typescript@npm%3A3.2.4#~builtin<compat/typescript>::version=3.2.4&hash=9a3324"
+  resolution: "typescript@patch:typescript@npm%3A3.2.4#~builtin<compat/typescript>::version=3.2.4&hash=701156"
   bin:
     tsc: ./bin/tsc
     tsserver: ./bin/tsserver
@@ -15371,7 +15541,7 @@ __metadata:
 
 "typescript@patch:typescript@3.5.3#~builtin<compat/typescript>, typescript@patch:typescript@~3.5.3#~builtin<compat/typescript>":
   version: 3.5.3
-  resolution: "typescript@patch:typescript@npm%3A3.5.3#~builtin<compat/typescript>::version=3.5.3&hash=19b265"
+  resolution: "typescript@patch:typescript@npm%3A3.5.3#~builtin<compat/typescript>::version=3.5.3&hash=701156"
   bin:
     tsc: ./bin/tsc
     tsserver: ./bin/tsserver
@@ -15381,7 +15551,7 @@ __metadata:
 
 "typescript@patch:typescript@3.6.4#~builtin<compat/typescript>":
   version: 3.6.4
-  resolution: "typescript@patch:typescript@npm%3A3.6.4#~builtin<compat/typescript>::version=3.6.4&hash=19b265"
+  resolution: "typescript@patch:typescript@npm%3A3.6.4#~builtin<compat/typescript>::version=3.6.4&hash=701156"
   bin:
     tsc: ./bin/tsc
     tsserver: ./bin/tsserver
@@ -16123,7 +16293,7 @@ __metadata:
     "@ngrx/effects": ^8.4.0
     "@ngrx/schematics": ^8.4.0
     "@ngrx/store": ^8.4.0
-    "@nrwl/angular": 8.6.0
+    "@nrwl/angular": 8.12.11
     "@nrwl/cypress": 8.6.0
     "@nrwl/express": ^8.6.0
     "@nrwl/jest": 8.6.0
@@ -16313,6 +16483,15 @@ __metadata:
   peerDependencies:
     webpack: ">= 4"
   checksum: ba5146dca00d99abfa77ffb4b263082b9dfd8b90ae38a98dae6ea4e1b1bba05994570577cb72c3f9a7fd43263377dcbae228dd71955dafb88978246afed7d8a7
+  languageName: node
+  linkType: hard
+
+"worker-rpc@npm:^0.1.0":
+  version: 0.1.1
+  resolution: "worker-rpc@npm:0.1.1"
+  dependencies:
+    microevent.ts: ~0.1.1
+  checksum: 8f8607506172f44c05490f3ccf13e5c1f430eeb9b6116a405919c186b8b17add13bbb22467a0dbcd18ec7fcb080709a15738182e0003c5fbe2144721ea00f357
   languageName: node
   linkType: hard
 
